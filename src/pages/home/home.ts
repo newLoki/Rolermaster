@@ -11,4 +11,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public enemyService: EnemyService) {
   }
 
+  onAttack() {
+    //this.navCtrl.push(AttackPage);
+    console.log('Attack');
+  }
 }

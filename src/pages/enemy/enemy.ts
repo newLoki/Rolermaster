@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { EnemyModel} from '../../models/enemy.model';
 import { EnemyService } from '../../services/enemy.service'
-import { HomePage } from '../home/home'
 
 @Component({
     selector: 'page-enemy',
