@@ -5,13 +5,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <h2>Rolermaster</h2>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item *ngFor ="let data of enemyService.enemies">
+        <h2>{{ data.name }}</h2>
+        Armor class: {{ data.armor_class }}
+        DB (1. RND/Other): {{ data.db_1 }} / {{data.db}}
+
+        <button ion-button>
+          <ion-icon name="cube"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
