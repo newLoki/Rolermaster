@@ -8,17 +8,17 @@
   <h2>Rolermaster</h2>
   <ion-list>
     <ion-item-sliding>
-      <ion-item *ngFor ="let data of enemyService.enemies">
-        <h2>{{ data.name }}</h2>
-        Armor class: {{ data.armor_class }}
-        DB (1. RND/Other): {{ data.db_1 }} / {{data.db}}
+      <ion-item *ngFor="let enemy of enemyService.enemies">
+        <h2>{{ enemy.name }}</h2>
+        Armor class: {{ enemy.armor_class }}
+        DB (1. RND/Other): {{ enemy.db_1 }} / {{enemy.db}}
 
-        <button ion-button>
+        <button ion-button (click)="onAttack(enemy)">
           <ion-icon name="cube"></ion-icon>
         </button>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary" (click)="onAttack()">
+        <button ion-button color="primary" >
           <ion-icon name="text"></ion-icon>
           Delete
         </button>

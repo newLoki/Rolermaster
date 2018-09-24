@@ -16,6 +16,16 @@ export class EnemyService {
         }
     }
 
+    find(name) {
+        for (let i = 0; i < this.enemies.length; i++) {
+            if (this.enemies[i].name === name) {
+                return this.enemies[i];
+            }
+        }
+
+        return null;
+    }
+
     createEnemy(values){
         let data = new EnemyModel();
         data.name = values.name;

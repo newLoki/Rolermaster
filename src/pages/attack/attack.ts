@@ -16,13 +16,25 @@ export class AttackPage {
         public modalCtrl: ModalController,
         public weaponService: WeaponService,
         public enemyService: EnemyService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private navParams: NavParams
     ) {
+        let enemy_db_1 = 0;
+        let enemy_db = 0;
+        let enemy_armor_class = 1;
+        let enemy = navParams.get('enemy');
+debugger;
+        if (enemy !== undefined) {
+            enemy_db = enemy['db'];
+            enemy_db_1 = enemy['db_1'];
+            enemy_armor_class = enemy['armor_class'];
+        }
+
         //@todo get the enemy if pre filled
         this.attackForm = this.formBuilder.group({
-            enemy_db_1: 0,
-            enemy_db: 0,
-            enemy_armor_class: 1,
+            enemy_db_1: enemy_db_1,
+            enemy_db: enemy_db,
+            enemy_armor_class: enemy_armor_class,
             weapon: [''],
             modifier: 0,
             first_round: false,
