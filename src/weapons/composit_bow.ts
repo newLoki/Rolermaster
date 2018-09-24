@@ -1,5 +1,6 @@
+import { stitch_table } from '../crits/stitch'
 
-let composit_bow_table = [
+export let composit_bow_table = [
   {
     "1": "27E",
     "2": "23E",
@@ -1083,6 +1084,6 @@ let composit_bow_table = [
 ];
 
 export class CompositBow {
-  constructor(public table = composit_bow_table, public name = 'Composit Bow', public crit_table = []) {
+  constructor(public table = composit_bow_table, public name = 'Composit Bow', public crit_table = stitch_table) {
   }
 }

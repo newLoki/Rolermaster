@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CompositBow } from '../weapons/composit_bow'
+import { Weapon } from '../weapons/weapon';
+import { composit_bow_table } from '../weapons/composit_bow';
+import { stitch_table } from '../crits/stitch'
 
 @Injectable()
 export class WeaponService {
@@ -7,7 +9,7 @@ export class WeaponService {
     names = [];
 
     constructor(){
-        this._addWeapon(new CompositBow());
+        this._addWeapon(new Weapon(composit_bow_table, 'Composit Bow', stitch_table));
     }
 
     _addWeapon(weapon) {
@@ -28,19 +30,9 @@ export class WeaponService {
 
     getResult(weapon_name, value, armor_class) {
         let selected_weapon = this._findWeapon(weapon_name);
-        let value = +value;
+        let data = selected_weapon.getResult(value, armor_class);
+        data['weapon'] = selected_weapon;
 
-        if (value > 150) {
-            value = 150;
-        }
-            
-        for (let i = 0; i < selected_weapon.table.length; i++) {
-            let data = selected_weapon.table[i];
-            if (value >= data['min'] && value <= data['max']) {
-                return data[armor_class];
-            }
-        }
-
-        return 0;
+        return data;
     }
 }

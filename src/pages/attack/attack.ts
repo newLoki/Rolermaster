@@ -67,19 +67,44 @@ export class AttackPage {
 <ion-content>
   <ion-list>
       <ion-item>
-          <h1>{{result}}</h1>
+          <h1>
+            {{result.hit}} <b>{{result.crit_class}}</b>
+            <button *ngIf="result.crit_class != ''" (click)="rollCrit()"><ion-icon name="cube"></ion-icon> Roll Dice</button>
+          </h1>
       </ion-item>
+      <ion-item>{{crit_text}}</ion-item>
   </ion-list>
 </ion-content>
 `
 })
 export class AttackResult {
     result;
-    constructor(public viewCtrl: ViewController, public params: NavParams) {
+    crit_text;
+    critForm: FormGroup;
+
+    constructor(public viewCtrl: ViewController, public params: NavParams, private formBuilder: FormBuilder) {
         this.result = params.get('result');
+        this.critForm = this.formBuilder.group({
+            crit_roll: 1
+        });
     }
 
     dismiss() {
         this.viewCtrl.dismiss();
+    }
+
+    rollCrit() {
+        this.critForm.value['crit_roll'] = this.getRandomInt(1, 100);
+        this.calculateCrit();
+    }
+
+    calculateCrit() {
+        let value = +this.critForm.value['crit_roll'];
+        let weapon = this.result['weapon'];
+        this.crit_text = weapon.getCritText(this.result['crit_class'], value);
+    }
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
