@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { EnemyService } from '../../services/enemy.service'
+import { EnemyService } from '../../services/enemy.service';
+import { AttackPage } from '../attack/attack';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,7 @@ export class HomePage {
   }
 
   onAttack() {
-    //this.navCtrl.push(AttackPage);
+    this.navCtrl.push(AttackPage);
     console.log('Attack');
   }
 }

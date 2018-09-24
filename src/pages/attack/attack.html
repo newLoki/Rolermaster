@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Attack</ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text showWhen="ios">Cancel</span>
+                <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h2>Rolermaster</h2>
+    <form [formGroup]="attackForm" class="modal-form">
+    <ion-item-group>
+            <h3>Enemy</h3>
+            <ion-item>
+                <ion-label floating>DB:</ion-label>
+                <ion-input type="number" [formControl]="attackForm.controls['enemy_db']" name="DB"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Armor Class:</ion-label>
+                <ion-select [formControl]="attackForm.controls['enemy_armor_class']" name="Armor">
+                    <ion-option value="1">1</ion-option>
+                    <ion-option value="2">2</ion-option>
+                    <ion-option value="3">3</ion-option>
+                    <ion-option value="4">4</ion-option>
+                    <ion-option value="5">5</ion-option>
+                    <ion-option value="6">6</ion-option>
+                    <ion-option value="7">7</ion-option>
+                    <ion-option value="8">8</ion-option>
+                    <ion-option value="9">9</ion-option>
+                    <ion-option value="10">10</ion-option>
+                    <ion-option value="11">11</ion-option>
+                    <ion-option value="12">12</ion-option>
+                    <ion-option value="13">13</ion-option>
+                    <ion-option value="14">14</ion-option>
+                    <ion-option value="15">15</ion-option>
+                    <ion-option value="16">16</ion-option>
+                    <ion-option value="17">17</ion-option>
+                    <ion-option value="18">18</ion-option>
+                    <ion-option value="19">19</ion-option>
+                    <ion-option value="20">20</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+        <h3>You</h3>
+        <ion-item>
+            <ion-label floating>Weapon</ion-label>
+            <ion-select [formControl]="attackForm.controls['weapon']" name="weapon">
+                <!-- @todo pre select the default weapon-->
+                <ion-option *ngFor="let name of weaponService.names">{{name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Modifier:</ion-label>
+            <ion-input type="number" [formControl]="attackForm.controls['modifier']" name="Modifier"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Dice Roll</ion-label>
+            <ion-input type="number" min=1 max=100 [formControl]="attackForm.controls['dice_roll']" name="Dice ROll"></ion-input>
+            <!-- @todo insert rolled dice into dice_roll field -->
+            <button>
+                Roll the dice
+            </button>
+        </ion-item>
+        <ion-item>
+            <ion-label>Is first round:</ion-label>
+            <ion-toggle [formControl]="attackForm.controls['first_round']" name="First Round"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <button ion-button block type="submit" color="ask" (click)="onSubmit()">
+                <b>Calculate </b> <ion-icon name="calculator"></ion-icon>
+            </button>
+        </ion-item>
+    </ion-item-group>
+    </form>
+</ion-content>

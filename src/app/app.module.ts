@@ -4,22 +4,24 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 
-import { AboutPage } from '../pages/about/about';
 import { EnemyPage } from '../pages/enemy/enemy';
 import { HomePage } from '../pages/home/home';
+import { AttackPage, AttackResult } from '../pages/attack/attack';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { EnemyService } from '../services/enemy.service';
+import { WeaponService } from '../services/weapon.service';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     EnemyPage,
     HomePage,
+    AttackPage,
+    AttackResult,
     TabsPage
   ],
   imports: [
@@ -30,8 +32,9 @@ import { EnemyService } from '../services/enemy.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     EnemyPage,
+    AttackPage,
+    AttackResult,
     HomePage,
     TabsPage
   ],
@@ -39,6 +42,7 @@ import { EnemyService } from '../services/enemy.service';
     StatusBar,
     SplashScreen,
     EnemyService,
+    WeaponService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
